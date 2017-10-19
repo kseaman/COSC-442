@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class createShapes : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class createShapes : MonoBehaviour {
 
 	public int shapeNum = 10;
 	public bool trigger = true;
+	public bool storyMode = false;
+	public int levelNum = 0;
 
 	bool checkArray(int checkInt, int checkInt2, int[] checkArray, int[] checkArray2){
 		for (int i = 0; i < checkArray.Length; i++) {
@@ -39,6 +42,12 @@ public class createShapes : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//check if it's story mode
+		Scene scene = SceneManager.GetActiveScene();
+		if (scene.name == "Story") {
+			storyMode = true;
+			shapeNum = 3;
+		}
 	}
 	
 	// Update is called once per frame
@@ -51,6 +60,18 @@ public class createShapes : MonoBehaviour {
 
 		if(!(checkShape(circleList) || checkShape(triangleList) || checkShape(squareList) || checkShape(pentagonList) || checkShape(hexagonList))){
 			trigger = true;
+
+			//while in story mode, up the level if a level has been completed
+			if(storyMode){
+				levelNum += 1;
+				shapeNum += 1;
+
+				//if the player has won the game, go to the win screen
+				if (levelNum == 6) {
+					trigger = false;
+					SceneManager.LoadScene ("Victory", LoadSceneMode.Single);
+				}
+			}
 		}
 
 		if (trigger) {
@@ -73,16 +94,27 @@ public class createShapes : MonoBehaviour {
 			for( int i = 0; i < shapeNum; i++){
 				randnum = Random.Range (1, 6);
 
+				//for story mode, limit which shapes can spawn depending on the level
+				if(storyMode){
+					randnum = Random.Range (1, levelNum + 1);
+				}
+
 				//create a pair of circles
 				if (randnum == 1) {
 					//set the shapes position
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 
 					//make sure the position isn't taken
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 
 					//create the shape, and mark off the position
@@ -94,9 +126,15 @@ public class createShapes : MonoBehaviour {
 
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 					Instantiate (Circle, new Vector3(xVal, yVal, 0), Quaternion.identity);
 					xVals [(i * 2) + 1] = xVal;
@@ -109,11 +147,17 @@ public class createShapes : MonoBehaviour {
 					//set the shapes position
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 
 					//make sure the position isn't taken
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 
 					//create the shape, and mark off the position
@@ -125,9 +169,15 @@ public class createShapes : MonoBehaviour {
 
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 					Instantiate (Triangle, new Vector3(xVal, yVal, 0), Quaternion.identity);
 					xVals [(i * 2) + 1] = xVal;
@@ -139,11 +189,17 @@ public class createShapes : MonoBehaviour {
 					//set the shapes position
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 
 					//make sure the position isn't taken
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 
 					//create the shape, and mark off the position
@@ -155,9 +211,15 @@ public class createShapes : MonoBehaviour {
 
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 					Instantiate (Square, new Vector3(xVal, yVal, 0), Quaternion.identity);
 					xVals [(i * 2) + 1] = xVal;
@@ -169,11 +231,17 @@ public class createShapes : MonoBehaviour {
 					//set the shapes position
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 
 					//make sure the position isn't taken
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 
 					//create the shape, and mark off the position
@@ -185,9 +253,15 @@ public class createShapes : MonoBehaviour {
 
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 					Instantiate (Pentagon, new Vector3(xVal, yVal, 0), Quaternion.identity);
 					xVals [(i * 2) + 1] = xVal;
@@ -199,11 +273,17 @@ public class createShapes : MonoBehaviour {
 					//set the shapes position
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 
 					//make sure the position isn't taken
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 
 					//create the shape, and mark off the position
@@ -215,9 +295,15 @@ public class createShapes : MonoBehaviour {
 
 					xVal = Random.Range(-5, 6) * 2;
 					yVal = Random.Range(-2, 3) * 2;
+					if (storyMode) {
+						yVal = Random.Range(0, 3) * 2;
+					}
 					while(checkArray(xVal, yVal, xVals, yVals)){
 						xVal = Random.Range(-5, 6) * 2;
 						yVal = Random.Range(-2, 3) * 2;
+						if (storyMode) {
+							yVal = Random.Range(0, 3) * 2;
+						}
 					}
 					Instantiate (Hexagon, new Vector3(xVal, yVal, 0), Quaternion.identity);
 					xVals [(i * 2) + 1] = xVal;

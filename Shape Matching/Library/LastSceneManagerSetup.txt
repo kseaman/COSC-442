@@ -14,3 +14,12 @@ sceneSetups:
 - path: Assets/Credits.unity
   isLoaded: 0
   isActive: 0
+- path: Assets/Story.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Victory.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Defeat.unity
+  isLoaded: 0
+  isActive: 0

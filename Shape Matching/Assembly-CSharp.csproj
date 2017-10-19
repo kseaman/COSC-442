@@ -49,9 +49,11 @@
      <Compile Include="Assets\Drag.cs" />
      <Compile Include="Assets\createShapes.cs" />
      <Compile Include="Assets\creditsText.cs" />
+     <Compile Include="Assets\driftDown.cs" />
      <Compile Include="Assets\hardModeRotate.cs" />
      <Compile Include="Assets\matchSame.cs" />
      <Compile Include="Assets\sceneSwitch.cs" />
+     <Compile Include="Assets\shapeCollide.cs" />
      <Compile Include="Assets\touchDrag.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
