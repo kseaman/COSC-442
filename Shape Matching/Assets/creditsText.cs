@@ -18,6 +18,6 @@ public class creditsText : MonoBehaviour {
 		var centeredStyle = GUI.skin.GetStyle("Label");
 		centeredStyle.alignment = TextAnchor.UpperCenter;
 		GUI.contentColor = Color.black;
-		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-25, 100, 50), "Credits:\nKarn Seaman", centeredStyle);
+		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-25, 100, 200), "Credits\n Characters: Karn Seaman\n SFX: Casual Game Sounds Single Shot SFX Pack", centeredStyle);
 	}
 }
