@@ -8,14 +8,17 @@ public class driftDown : MonoBehaviour {
 	public bool storyMode = false;
 	public bool touchInput = false;
 	public bool mouseInput = false;
+	public SceneAnalyzer analyzer = null;
 
 	// Use this for initialization
 	void Start () {
 		Scene scene = SceneManager.GetActiveScene();
 		if (scene.name == "Story") {
+			analyzer = GameObject.FindWithTag ("StaticObject").GetComponent<SceneAnalyzer> ();
 			storyMode = true;
-			this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.05f;
+			this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.035f + (analyzer.finScore*0.0009f);
 		}
+			
 	}
 	
 	// Update is called once per frame

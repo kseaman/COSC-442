@@ -23,3 +23,9 @@ sceneSetups:
 - path: Assets/Defeat.unity
   isLoaded: 0
   isActive: 0
+- path: Assets/CutScene1.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/CutScene2.unity
+  isLoaded: 0
+  isActive: 0

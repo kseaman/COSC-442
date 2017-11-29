@@ -1,2 +1,4 @@
-http://answers.unity3d.com/questions/600578/dragging-an-object-by-touch.html
+Background: Village, Gustavo Rezende, CC0
 Audio: Casual Game Sounds Single Shot SFX Pack, CC0
+Music: 	Calm Background Music	BitsAlive Game Studios	Unity Asset Store EULA
+	Heroic Background Music

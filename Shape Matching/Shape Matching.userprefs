@@ -1,18 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\creditsText.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\audioManager.cs">
     <Files>
-      <File FileName="Assets\shapeCollide.cs" Line="1" Column="1" />
-      <File FileName="Assets\sceneSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets\driftDown.cs" Line="1" Column="1" />
-      <File FileName="Assets\createShapes.cs" Line="1" Column="1" />
-      <File FileName="Assets\hardModeRotate.cs" Line="1" Column="1" />
-      <File FileName="Assets\creditsText.cs" Line="21" Column="155" />
-      <File FileName="Assets\Drag.cs" Line="1" Column="1" />
-      <File FileName="Assets\touchDrag.cs" Line="1" Column="1" />
-      <File FileName="Assets\SceneAnalyzer.cs" Line="1" Column="1" />
-      <File FileName="Assets\matchSame.cs" Line="1" Column="1" />
       <File FileName="Assets\matchSound.cs" Line="1" Column="1" />
+      <File FileName="Assets\matchSame.cs" Line="1" Column="1" />
+      <File FileName="Assets\SceneAnalyzer.cs" Line="1" Column="1" />
+      <File FileName="Assets\createShapes.cs" Line="91" Column="40" />
+      <File FileName="Assets\cutscene2.cs" Line="1" Column="1" />
+      <File FileName="Assets\cutscene1.cs" Line="1" Column="1" />
+      <File FileName="Assets\hardModeRotate.cs" Line="1" Column="1" />
+      <File FileName="Assets\mute.cs" Line="1" Column="1" />
+      <File FileName="Assets\audioManager.cs" Line="64" Column="57" />
+      <File FileName="Assets\driftDown.cs" Line="19" Column="68" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

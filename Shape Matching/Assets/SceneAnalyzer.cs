@@ -12,6 +12,13 @@ public class SceneAnalyzer : MonoBehaviour {
 	int setSceneNum = 0;
 	string sceneName;
 
+	public int[,] errortracker = new int[9,9];
+	public int reportnum = 0;
+
+	public bool challengeMode = false;
+	bool[] wintracker = new bool[20];
+	public float finScore = 0.0f;
+
 	int sceneNum(){
 		if (SceneManager.GetActiveScene ().name == "Easy") {
 			return 1;
@@ -40,6 +47,13 @@ public class SceneAnalyzer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		//set up the win tracker, every second entry is true
+		bool setupBool = false;
+		for(int i = 0; i<20; i++){
+			wintracker [i] = setupBool;
+			setupBool = !setupBool;
+		}
 		
 	}
 	
@@ -69,14 +83,88 @@ public class SceneAnalyzer : MonoBehaviour {
 				if(SceneManager.GetActiveScene ().name == "Victory"){
 					Analytics.CustomEvent ("Player win", new Dictionary<string, object>{{"Player ID:", SystemInfo.deviceUniqueIdentifier}, 
 						{"Timestamp:", System.DateTime.Now}});
+					updateRecord (true);
 				}
 
 				if(SceneManager.GetActiveScene ().name == "Defeat"){
 					Analytics.CustomEvent ("Player lose", new Dictionary<string, object>{{"Player ID:", SystemInfo.deviceUniqueIdentifier},
 						{"Timestamp:", System.DateTime.Now}});
+					updateRecord (false);
 				}
+					
 			}
 			sceneName = SceneManager.GetActiveScene ().name;
 		}
+	}
+
+	//update the win tracker, true is a win
+	void updateRecord(bool win){
+		float endValue = 2.0f;
+		finScore = 0f;
+		for(int i = 0; i< wintracker.Length - 1; i++){
+			wintracker[wintracker.Length - 1 - i] = wintracker[wintracker.Length - 2 - i];
+		}
+		wintracker [0] = win;
+
+		foreach(bool gameWon in wintracker){
+			if (gameWon) {
+				finScore += endValue;
+			} else {
+				finScore -= endValue;
+			}
+			endValue -= 0.1f;
+		}
+		if (finScore > 7.0f) {
+			challengeMode = true;
+		} else {
+			challengeMode = false;
+		}
+	}
+
+	public void reportError(string shape1, string shape2){
+		int num1 = -1;
+		int num2 = -1;
+		if (shape1 == "Match Circle") {
+			num1 = 0;
+		}else if(shape1=="Match Triangle"){
+			num1 = 1;
+		}else if(shape1=="Match Square"){
+			num1 = 2;
+		}else if(shape1=="Match Pentagon"){
+			num1 = 3;
+		}else if(shape1=="Match Hexagon"){
+			num1 = 4;
+		}else if(shape1=="Match Trapezoid"){
+			num1 = 5;
+		}else if(shape1=="Match Hourglass"){
+			num1 = 6;
+		}else if(shape1=="Match Star"){
+			num1 = 7;
+		}else if(shape1=="Match Moon"){
+			num1 = 8;
+		}
+
+		if (shape2 == "Match Circle") {
+			num2 = 0;
+		}else if(shape2=="Match Triangle"){
+			num2 = 1;
+		}else if(shape2=="Match Square"){
+			num2 = 2;
+		}else if(shape2=="Match Pentagon"){
+			num2 = 3;
+		}else if(shape2=="Match Hexagon"){
+			num2 = 4;
+		}else if(shape2=="Match Trapezoid"){
+			num2 = 5;
+		}else if(shape2=="Match Hourglass"){
+			num2 = 6;
+		}else if(shape2=="Match Star"){
+			num2 = 7;
+		}else if(shape2=="Match Moon"){
+			num2 = 8;
+		}
+
+		reportnum ++;
+		errortracker[num1, num2] ++;
 	}
 }

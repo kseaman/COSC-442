@@ -48,12 +48,17 @@
   <ItemGroup>
      <Compile Include="Assets\Drag.cs" />
      <Compile Include="Assets\SceneAnalyzer.cs" />
+     <Compile Include="Assets\audioManager.cs" />
      <Compile Include="Assets\createShapes.cs" />
      <Compile Include="Assets\creditsText.cs" />
+     <Compile Include="Assets\cutscene1.cs" />
+     <Compile Include="Assets\cutscene2.cs" />
+     <Compile Include="Assets\donotdestroy.cs" />
      <Compile Include="Assets\driftDown.cs" />
      <Compile Include="Assets\hardModeRotate.cs" />
      <Compile Include="Assets\matchSame.cs" />
      <Compile Include="Assets\matchSound.cs" />
+     <Compile Include="Assets\mute.cs" />
      <Compile Include="Assets\sceneSwitch.cs" />
      <Compile Include="Assets\shapeCollide.cs" />
      <Compile Include="Assets\touchDrag.cs" />
